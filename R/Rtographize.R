@@ -1,4 +1,5 @@
 Rtographize <- function(spplotObj, type = c("p", "l"), 
+                        border.col = "black",
                         point.type = c("circles", "rectangles"), ...) { 
   
   typ <- type[1]
@@ -7,13 +8,13 @@ Rtographize <- function(spplotObj, type = c("p", "l"),
   p.char <- switch(p.type,
                    "circles" = 21L,
                    "rectangles" = 22L)
+  p.char <- rep(p.char, length(spplotObj$panel.args[[1]]$x))
   
-  tmp <- update(spplotObj, type = typ,
-                legend = NULL, axs = "i", cex = 1.5,
-                scales = list(draw = TRUE, y = list(rot = c(90)), 
-                              alternating = 3), 
-                pch = p.char, edge.col = "black")
-  
-  return(tmp)
-  
+  update(spplotObj, type = typ, legend = NULL, 
+         axs = "i", cex = rep(1.5, length(p.char)),
+         scales = list(draw = TRUE, y = list(rot = c(90)), 
+                       alternating = 3), 
+         pch = p.char, col = rep(border.col, length(p.char)),
+         ...)
+
 }
