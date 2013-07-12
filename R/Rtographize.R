@@ -9,7 +9,7 @@ Rtographize <- function(spplotObj, type = c("p", "l"),
                    "rectangles" = 22L)
   
   tmp <- update(spplotObj, type = typ,
-                auto.key = FALSE, axs = "i", cex = 1.5,
+                legend = NULL, axs = "i", cex = 1.5,
                 scales = list(draw = TRUE, y = list(rot = c(90)), 
                               alternating = 3), 
                 pch = p.char, edge.col = "black")
