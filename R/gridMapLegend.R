@@ -1,6 +1,6 @@
 gridMapLegend <- function(labs, clrs = NULL, 
                           type = c("circles", "rectangles", "lines"),
-                          ...) {
+                          scale.fact = 2.5) {
   
   library(grid)
   
@@ -49,7 +49,7 @@ gridMapLegend <- function(labs, clrs = NULL,
     pushViewport(vp)
     
     txt <- resizingTextGrob(x = 0, sort(unique(labs))[i],
-                            just = "left")
+                            just = "left", scale.fact = scale.fact)
     
     grid.draw(txt)
     
