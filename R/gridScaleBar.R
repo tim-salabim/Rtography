@@ -1,8 +1,11 @@
 gridScaleBar <- function(lattice.obj, addParams = list(), 
-                         scale.fact = 1, ...) {
+                         scale.fact = 1, 
+                         unit = c("meters", "kilometers"), ...) {
 
   library(gridExtra)
   library(plyr)
+  
+  units <- unit[1]
   
   ### some helper functions especially for the grid layout
   ### resizingTextGrob from 
@@ -20,7 +23,7 @@ gridScaleBar <- function(lattice.obj, addParams = list(),
 
   cvp <- current.viewport()
   
-  addParamsDefaults = list(noBins = 5, unit = "meters", 
+  addParamsDefaults = list(noBins = 5,
                            placement = "centre", 
                            vpwidth = as.numeric(cvp$width), 
                            vpheight = 0.1, sbHeightvsWidth = 1/10)
@@ -47,6 +50,10 @@ gridScaleBar <- function(lattice.obj, addParams = list(),
   
   range_x <- range_x_nice[[ind]] * length.scalebar * 
     addParams[["vpwidth"]] / adj
+  
+  range_x <- switch(units,
+                    "meters" = range_x,
+                    "kilometers" = range_x / 1000)
   
   widthBin <- length.scalebar / addParams[["noBins"]]
   heightBin <- length.scalebar * addParams[["sbHeightvsWidth"]]
@@ -75,7 +82,7 @@ gridScaleBar <- function(lattice.obj, addParams = list(),
     x = unique(round(scale.bar.polygon$x, 7)), 
     y = unit(0.4, "npc"), just = "top", scale.fact = scale.fact)
   
-  scale.main <- resizingTextGrob(addParams[["unit"]], 
+  scale.main <- resizingTextGrob(unit, 
                                  x = 0.5, y = 0.75, 
                                  scale.fact = scale.fact, ...)
   
