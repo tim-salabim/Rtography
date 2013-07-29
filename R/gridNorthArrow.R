@@ -1,4 +1,4 @@
-gridNorthArrow <- function(..., scale.fact = 1, rot = 0, l.width = 2) {
+gridNorthArrow <- function(..., rot = 0, l.width = 2) {
   
   library(gridExtra)
       
@@ -10,8 +10,7 @@ gridNorthArrow <- function(..., scale.fact = 1, rot = 0, l.width = 2) {
                           lineend = "butt", 
                           linejoin = "mitre"))
   
-  arrow.n <- resizingTextGrob("N", x = 0.5, y = 0.4, 
-                              scale.fact = scale.fact)
+  arrow.n <- resizingTextGrob("N", x = 0.5, y = 0.4)
   
   grid.draw(arrow.n)
   

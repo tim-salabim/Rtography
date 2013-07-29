@@ -1,4 +1,4 @@
-gridScaleBar <- function(lattice.obj, addParams = list()) {
+gridScaleBar <- function(lattice.obj, addParams = list(), ...) {
 
   library(gridExtra)
   library(plyr)
@@ -75,7 +75,7 @@ gridScaleBar <- function(lattice.obj, addParams = list()) {
     y = unit(0.4, "npc"), just = "top")
   
   scale.main <- resizingTextGrob(addParams[["unit"]], 
-                                 x = 0.5, y = 0.75)
+                                 x = 0.5, y = 0.75, ...)
   
   grid.draw(scale.labs)
   grid.draw(scale.main)
