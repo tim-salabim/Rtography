@@ -1,5 +1,5 @@
 gridScaleBar <- function(lattice.obj, addParams = list(), 
-                         scale.fact = 2.5, ...) {
+                         scale.fact = 1, ...) {
 
   library(gridExtra)
   library(plyr)
@@ -73,7 +73,7 @@ gridScaleBar <- function(lattice.obj, addParams = list(),
     c(0, round(cumsum(rep(range_x / addParams[["noBins"]], 
                           addParams[["noBins"]])))), 
     x = unique(round(scale.bar.polygon$x, 7)), 
-    y = unit(0.4, "npc"), just = "top")
+    y = unit(0.4, "npc"), just = "top", scale.fact = scale.fact)
   
   scale.main <- resizingTextGrob(addParams[["unit"]], 
                                  x = 0.5, y = 0.75, 

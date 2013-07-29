@@ -1,5 +1,5 @@
 gridNorthArrow <- function(..., rot = 0, l.width = 2,
-                           scale.fact = 2.5) {
+                           scale.fact = 1) {
   
   library(gridExtra)
       
