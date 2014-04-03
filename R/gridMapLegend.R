@@ -1,6 +1,6 @@
 gridMapLegend <- function(labs, clrs = NULL, 
                           type = c("circles", "rectangles", "lines"),
-                          scale.fact = 2.5) {
+                          scale.fact = 2.5, ...) {
   
   library(grid)
   
@@ -28,10 +28,10 @@ gridMapLegend <- function(labs, clrs = NULL,
     
     switch(type,
            "circles" = grid.circle(gp = gpar(fill = clrs[i], 
-                                             col = "black")),
+                                             col = "black", ...)),
            "rectangles" = grid.rect(gp = gpar(fill = clrs[i], 
-                                              col = "black")),
-           "lines" = grid.lines(gp = gpar(col = clrs[i], lwd = 5)))
+                                              col = "black", ...)),
+           "lines" = grid.lines(gp = gpar(col = clrs[i], lwd = 5, ...)))
     
     upViewport()
     

@@ -1,7 +1,7 @@
 ### some helper functions especially for the grid layout
 ### resizingTextGrob from 
 ### http://ryouready.wordpress.com/2012/08/01/
-resizingTextGrob <- function(..., scale.fact = 1) {
+resizingTextGrob <- function(..., scale.fact) {
   
   grob(tg = textGrob(...), cl = "resizingTextGrob", 
        scale.fact = scale.fact)
@@ -14,7 +14,7 @@ drawDetails.resizingTextGrob <- function(x, scale.fact, recording = TRUE) {
 
 }
 
-preDrawDetails.resizingTextGrob <- function(x, ...) {
+preDrawDetails.resizingTextGrob <- function(x, scale.fact) {
   
   library(scales)
   
