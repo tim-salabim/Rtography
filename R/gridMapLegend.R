@@ -48,7 +48,7 @@ gridMapLegend <- function(labs, clrs = NULL,
   
     pushViewport(vp)
     
-    txt <- resizingTextGrob(x = 0, sort(unique(labs))[i],
+    txt <- resizingTextGrob(x = 0, labs[i],
                             just = "left", scale.fact = scale.fact)
     
     grid.draw(txt)
